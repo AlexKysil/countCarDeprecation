@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 
 from chromedriver_py import binary_path as chrome_path
+from helpers.constants import TIMEOUTS
 
 
 @pytest.fixture(scope='module')
@@ -13,7 +14,7 @@ def driver_session():
 
     driver_session = webdriver.Chrome(chrome_path)
     driver_session.maximize_window()
-    driver_session.implicitly_wait()
+    driver_session.implicitly_wait(TIMEOUTS['small'])
 
     yield driver_session
 
