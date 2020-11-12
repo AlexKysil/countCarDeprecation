@@ -12,7 +12,7 @@ def driver_session():
     :return:
     """
 
-    driver_session = webdriver.Chrome(chrome_path)
+    driver_session = webdriver.Chrome(executable_path=chrome_path)
     driver_session.maximize_window()
     driver_session.implicitly_wait(TIMEOUTS['small'])
 

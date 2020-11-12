@@ -23,7 +23,8 @@ class MainPage(BasePageObject):
     def select_option_value(self, value):
         locator = self.locators.BRAND_LIST_VALUE
         locator = (locator[0], locator[1].format(value))
-        return self.custom_find_element(locator)
+        self.wait_for_element(locator)
+        self.custom_find_element(locator).click()
 
     def click_search_butn(self):
         self.wait_for_element(self.locators.SEARCH_BUTTON)
@@ -35,7 +36,15 @@ class MainPage(BasePageObject):
     def get_year_to(self):
         return self.custom_find_element(self.locators.SELECT_YEAR_TO)
 
-    def select_year(self, year):
-        locator = self.locators.OPTION_VALUE
+    def select_year(self, field, year):
+        locator = ''
+        if field == 'from':
+            locator = self.locators.YEAR_FROM_VALUE
+        elif field == 'to':
+            locator = self.locators.YEAR_TO_VALUE
+        else:
+            locator = self.locators.OPTION_VALUE
+
         locator = (locator[0], locator[1].format(year))
-        return self.custom_find_element(locator)
+        self.wait_for_element(locator)
+        self.custom_find_element(locator).click()
