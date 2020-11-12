@@ -7,6 +7,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
 from helpers.constants import TIMEOUTS
+from helpers import locators
+
 
 class BasePageObject():
     """
@@ -16,7 +18,7 @@ class BasePageObject():
         self.driver = driver_session
         self.timeouts = TIMEOUTS
         self.url = page_url
-
+        self.locators = locators
 
     def is_page_opened(self):
         """
